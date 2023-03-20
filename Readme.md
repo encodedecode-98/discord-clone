@@ -1,6 +1,8 @@
 ## Discord Clone 
 
-A discord clone create using MERN stack
+A discord clone create using MERN stack , socket.io and WebRTC 
+
+
 
 --- 
 

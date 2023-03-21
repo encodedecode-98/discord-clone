@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const authControllers = require("../controllers/auth/authController");
-
+const auth = require('../middleware/auth')
 const Joi = require("joi");
 
 const validator = require("express-joi-validation").createValidator({});
@@ -35,5 +35,12 @@ router.post(
 // router.post("/login", async (req, res) => {
 //   return res.status(200).send("login ");
 // });
+
+// TEST ROUTES 
+
+router.get("/test"  ,auth , async (req,res)=>{
+   return res.status(200).send("Token verified")
+})
+
 
 module.exports = router;

@@ -40,7 +40,9 @@ const InputWithLabel = (props : any) => {
 
             <Label>{label}</Label>
             <Input 
+            type = {type}
             value ={value}
+            placeholder = {placeholder}
             onChange={handleValueChange}/>
             
         </Wrapper>

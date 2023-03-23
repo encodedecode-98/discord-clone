@@ -4,7 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import LoginPage from "./authPages/LoginPage/LoginPage";
-import RegisterPage from "./authPages/RegisterPage";
+import RegisterPage from "./authPages/RegisterPage/RegisterPage";
 import Dashboard from "./DashBoard";
 function App() {
   const [count, setCount] = useState(0);

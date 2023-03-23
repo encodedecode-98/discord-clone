@@ -11,6 +11,9 @@ const postLogin = async (req,res)=>{
             mail: mail.toLowerCase(),
         })
         console.log(user)
+        console.log("PASSWORD"+password);
+        console.log("USERNAME")
+        console.log("COMPARISION RESULT : " + bcrypt.compare(password, user.password))
         if(user && ( bcrypt.compare(password, user.password))){
 
             // successfully logged in so send a new token

@@ -29,13 +29,15 @@ const login = (userDetails : any ,navigate :any) : any   =>{
     return async (dispatch : typeof store.dispatch) =>{
         try{
             const response : AxiosResponse<any> = await api.login(userDetails) as AxiosResponse<any>;
-            const {userDetails1  } = response?.data;
-            localStorage.setItem('userDetails   1', JSON.stringify(userDetails1));
-            dispatch(setUserDetails(userDetails1));
+            console.log("RESPONSE");
+            console.log(response)
+            const userDetail = response?.data.data.userDetails;
+            // console.log(userDetails1);
+            localStorage.setItem('userDetails', JSON.stringify(userDetail));
+            dispatch(setUserDetails(userDetail));
             navigate('/dashboard')
-
         }
-        catch(error : unknown){
+        catch(error : any){
             alert(JSON.stringify(error));
         }
       

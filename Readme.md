@@ -13,3 +13,13 @@ yarn
 yarn dev 
 
 ```
+
+**Note** : Tooltip will only work with if div is wrapped with a Tooltip Wrapper
+
+
+Regex for validating email addresss 
+
+/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+
+
+

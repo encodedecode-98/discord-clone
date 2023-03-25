@@ -1,7 +1,11 @@
 import React from 'react'
 import SnackBar from '@mui/material/Snackbar'
 import Alert from '@mui/material/Alert'
-const AlertNotification = () => {
+import { getActions } from '../../actions/alertActions'
+import store from '../../store/store'
+import { connect } from 'react-redux'
+
+const AlertNotification = ({showAlertMessage , closeAlertMessage , alertMessageContent} : any ) => {
   return (
     <div>
         <SnackBar
@@ -9,8 +13,8 @@ const AlertNotification = () => {
             vertical : 'top',
             horizontal : 'center'
         }}
-        open 
-        onClose ={()=>{}}
+        open= {showAlertMessage}
+        onClose ={closeAlertMessage}
         autoHideDuration ={6000}
 
         >
@@ -23,4 +27,22 @@ const AlertNotification = () => {
   )
 }
 
-export default AlertNotification
+interface IAlert{
+    alert : Object
+}
+const mapStoreStateToProp = ({alert} : IAlert) =>{
+    return {
+        ... alert, 
+    }
+}
+
+
+const mapActionsToProps = (dispatch : typeof store.dispatch)=>{
+    return {
+        ...getActions(dispatch)
+    }
+
+}
+
+
+export default connect(mapStoreStateToProp,mapActionsToProps)(AlertNotification) ;

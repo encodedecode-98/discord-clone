@@ -1,0 +1,32 @@
+[
+    {
+        "id" : 1,  
+        "username" :"Mark",
+        "isOnline" : true
+    }
+    ,
+    {
+        "id" : 2,  
+        "username" :"John",
+        "isOnline" : true
+    }
+    ,
+    
+    {
+        "id" : 3,  
+        "username" :"Tanveer",
+        "isOnline" : true
+    }
+    ,
+    
+    {
+        "id" : 4,  
+        "username" :"Bishwaraj",
+        "isOnline" : true
+    },
+    {
+        "id" : 5,  
+        "username" :"Chinmoy",
+        "isOnline" : true
+    }
+]

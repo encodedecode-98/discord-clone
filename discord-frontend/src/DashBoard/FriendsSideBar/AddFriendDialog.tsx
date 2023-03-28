@@ -3,8 +3,11 @@ import Dialog from "@mui/material/Dialog";
 import { validateMail } from "../../shared/utils/validators";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import Typography  from "@mui/material/Typography";
-import { DialogTitle } from "@mui/material";
+import DialogTitle  from "@mui/material/DialogTitle";
+import DialogContentText from "@mui/material/DialogContentText";
+import Typography from "@mui/material/Typography";
+import InputWithLabel from "../../shared/components/InputWithLabel";
+import CustomPrimaryButton from "../../shared/components/CustomPrimaryButton";
 
 const AddFriendDialog = ({
   isDialogOpen,
@@ -16,35 +19,54 @@ const AddFriendDialog = ({
 
   const handleSendInvitation = () => {
     // send Friend Request to server
+    console.log("Friend Request Send to Server")
   };
 
   const handleCloseDialog = () => {
+    console.log('clicked')
     closeDialogHandler();
     setMail("");
   };
 
   useEffect(() => {
-    setIsFormValid(true);
+    setIsFormValid(validateMail(mail));
   }, [mail, setIsFormValid]);
 
-  return <div>
-    <Dialog
-    open = {isDialogOpen}
-    onClose = {
-        handleCloseDialog
-    }
-
-    
-    >
-        <DialogTitle
-        
-        
-        > 
-            <Typography>Invite a Friend</Typography>
+  return (
+    <>
+      <Dialog open={isDialogOpen} onClose={handleCloseDialog}>
+        <DialogTitle>
+          <Typography>Dialog Title</Typography>
         </DialogTitle>
-
-    </Dialog>
-  </div>;
+        <DialogContent>
+          <DialogContentText>
+            <Typography>Dialog Content</Typography>
+            <InputWithLabel
+            label ="Mail"
+            type ="text"
+            value = {mail}
+            setValue = {setMail}
+            placeholder = "Enter Your Email Address"
+            />
+           
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <CustomPrimaryButton
+            onClick = {handleSendInvitation}
+            disabled = {!isFormValid}
+            label = "Send"
+            additionalStyles = {{
+              marginLeft : "15px",
+              marginRight : "15px",
+              marginBottom : "10px"
+            }}
+          >
+          </CustomPrimaryButton>
+        </DialogActions>
+      </Dialog>
+    </>
+  );
 };
 
 export default AddFriendDialog;

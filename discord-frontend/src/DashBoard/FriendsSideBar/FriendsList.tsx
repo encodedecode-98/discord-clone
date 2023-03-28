@@ -1,16 +1,25 @@
-import React from 'react'
-import {styled} from '@mui/system';
- 
-
-const MainContainer = styled('div')({
-    flexGrow : 1 ,
-    width: '100%'
-})
+import React from "react";
+import { styled } from "@mui/system";
+import DUMMY_LIST from "./DATA.json";
+import FriendsListItem from "./FriendsListItem";
+import Typography from "@mui/material/Typography";
+const MainContainer = styled("div")({
+  flexGrow: 1,
+  width: "100%",
+});
 
 const FriendsList = () => {
   return (
-    <MainContainer>FriendsList</MainContainer>
-  )
-}
+    <MainContainer>
+      {DUMMY_LIST.map((f) => (
+        <FriendsListItem
+          id={f.id}
+          username={f.username}
+          isOnline={f.isOnline}
+        />
+      ))}
+    </MainContainer>
+  );
+};
 
-export default FriendsList
+export default FriendsList;

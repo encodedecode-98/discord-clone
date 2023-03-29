@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "senderId": {
+      "username": "John",
+      "mail": "john@ad.com"
+    }
+  },
+  {
+    "id": 2,
+    "senderId": {
+      "username": "John",
+      "mail": "john@ad.com"
+    }
+  },
+
+  {
+    "id": 3,
+    "senderId": {
+      "username": "John",
+      "mail": "john@ad.com"
+    }
+  },
+  {
+    "id": 4,
+    "senderId": {
+      "username": "John",
+      "mail": "john@ad.com"
+    }
+  }
+]

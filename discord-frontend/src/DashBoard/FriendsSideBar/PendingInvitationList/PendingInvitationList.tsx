@@ -16,17 +16,17 @@ const MainContainer  = styled('div')({
 const PendingInvitationList = () => {
   return (
     <MainContainer>{
-      DummyInvitationList.map((element)=>{
+      DummyInvitationList.map((element ,idx)=>{
         return (  
-          <>
+          <div key={idx}>
           <PendingInvitationListItem 
             id = {element.id}
             username = {element.senderId.username}
             mail = {element.senderId.mail}
-  
+          
           />
 
-          </>
+          </div>
         )
       })
       }</MainContainer>

@@ -12,6 +12,7 @@ interface IPendingInvitationListItem {
   mail: string;
   acceptFriendInvitation ?: ({ id }: IObj) => void;
   rejectFriendInvitation?: ({ id }: IObj) => void;
+
 }
 
 const PendingInvitationListItem = ({

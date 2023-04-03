@@ -39,8 +39,13 @@ router.post(
 // TEST ROUTES 
 
 router.get("/test"  ,auth , async (req,res)=>{
-   return res.status(200).send("Token verified")
+   return res.status(200).send({
+    validity : true , 
+    message : "Valid token"
+   })
 })
+
+
 
 
 module.exports = router;

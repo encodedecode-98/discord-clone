@@ -26,7 +26,10 @@ const postLogin = async (req, res) => {
         message: "Something went wrong . Please try Again",
       });
 
-    const token = "JWT_TOKEN";
+    const token = jwt.sign({
+      data: 'foobar'
+    }, process.env.SECRET_KEY, { expiresIn: '3600' }); // expires in 60 seconds
+    
     return res.status(200).json({
       userDetails: {
         mail: user.mail,

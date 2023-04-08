@@ -53,11 +53,12 @@ const register = (userDetails : any ,navigate :any) : any   =>{
     return async (dispatch : typeof store.dispatch) =>{
         try{
             const response : AxiosResponse<any> = await api.register(userDetails) as AxiosResponse<any>;
-            const {userDetails1  } = response?.data;
+            const {userDetails1} = response?.data;
+            console.log("USER DETAILS")
+            console.log(userDetails1);
             localStorage.setItem('userDetails1', JSON.stringify(userDetails1));
             dispatch(setUserDetails(userDetails1));
             navigate('/dashboard')
-
         }
         catch(error : unknown){
             alert(JSON.stringify(error));

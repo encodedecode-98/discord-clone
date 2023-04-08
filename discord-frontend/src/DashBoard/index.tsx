@@ -8,19 +8,27 @@ import AppBar from './AppBar/AppBar'
 import {useNavigate} from 'react-router-dom'
 import { logout } from '../shared/utils/auth'
 import store from '../store/store'
+import axios from 'axios'
 
-import { getActions } from '../actions/alertActions'
+import { getActions } from '../actions/authAction'
+import { connectWithSocketServer } from '../realtimeCommunication/SocketConnection'
 const Wrapper  = styled('div')({
   width: '100vw',
   height : '100vh',
   display: 'flex'
 })
+const data = JSON.parse(localStorage.getItem('userDetails') as string);
+let reqInstance = axios.create({
+  
+  headers: {
+    Authorization : `Bearer ${data.token}`
+    }
+  });
 
 
 const Dashboard = ({setUserDetails} : any) => { 
+  console.log(setUserDetails)
  const navigate = useNavigate();
-
-
   useEffect(()=>{
     const userDetails = localStorage.getItem('userDetails');
     if(!userDetails) {
@@ -29,10 +37,19 @@ const Dashboard = ({setUserDetails} : any) => {
       logout();
     }
     else{
-      setUserDetails(JSON.parse(userDetails))
+      setUserDetails(JSON.parse(userDetails));
+      connectWithSocketServer(JSON.parse(userDetails));
     }
-
   },[])
+
+  // useEffect(()=>{
+  //   console.log("Inside Valitity Checking Hook")
+  //   const validate = reqInstance.get('localhost:3000/api/test').then((response)=>{
+  //     console.log(response.data)
+  //   })
+  //   .catch(err=>console.log(err))
+  // })
+
   return (
   <Wrapper>
      <SideBar/>
@@ -43,10 +60,10 @@ const Dashboard = ({setUserDetails} : any) => {
   )
 }
 
-const mapActionToProps = (dispatch : typeof store.dispatch)=>{
+const mapActionsToProps = (dispatch :any ) => {
   return {
-    ...getActions(dispatch)
-  }
-}
+    ...getActions(dispatch),
+  };
+};
 
-export default connect(null, mapActionToProps) (Dashboard)
+export default connect(null, mapActionsToProps)(Dashboard);

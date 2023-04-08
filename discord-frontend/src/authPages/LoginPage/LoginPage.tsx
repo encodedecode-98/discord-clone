@@ -21,9 +21,7 @@ const LoginPage = ({login} : any ) => {
     console.log('login in')
     console.log("mail" + mail)
     console.log("password" +password);
-    const userDetails = {
-      mail , password
-    }
+    const userDetails = { mail , password}
     login(userDetails , navigate)
   }
   useEffect(()=>{

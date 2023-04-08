@@ -11,12 +11,14 @@ const MainContainer = styled("div")({
 const FriendsList = () => {
   return (
     <MainContainer>
-      {DUMMY_LIST.map((f) => (
-        <FriendsListItem
-          id={f.id}
-          username={f.username}
-          isOnline={f.isOnline}
-        />
+      {DUMMY_LIST.map((f,idx) => (
+        <div key = {idx}>
+          <FriendsListItem
+            id={f.id}
+            username={f.username}
+            isOnline={f.isOnline}
+          />
+        </div>
       ))}
     </MainContainer>
   );
